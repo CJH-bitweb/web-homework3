@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二级水平导航菜单</title>
+    <style>
+        /* ===== 全局 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 0;
+        }
+
+        /* ===== 所有 ul 去项目符号 ===== */
+        ul {
+            list-style: none;
+        }
+
+        /* ===== 第一个 ul：logo 行 ===== */
+        ul:first-of-type {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        ul:first-of-type .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a5490;
+            letter-spacing: 2px;
+        }
+
+        /* ===== 第二个 ul：一级导航条 ===== */
+        ul:nth-of-type(2) {
+            display: flex;               /* 水平排列 */
+            justify-content: center;
+            background: #1a5490;
+            border-radius: 4px;
+            max-width: 1100px;
+            margin: 0 auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 一级菜单项：作为二级菜单定位的参照物 */
+        ul:nth-of-type(2) > li {
+            position: relative;          /* ★ 相对定位：子菜单以此为原点 */
+            border-right: 1px solid #2c6cb0;
+        }
+
+        ul:nth-of-type(2) > li:last-child {
+            border-right: none;
+        }
+
+        /* 一级链接 */
+        ul:nth-of-type(2) > li > a {
+            display: block;
+            padding: 14px 22px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            white-space: nowrap;
+            transition: background 0.25s;
+        }
+
+        ul:nth-of-type(2) > li > a:hover {
+            background: #f39c12;
+        }
+
+        /* ===== 二级菜单（嵌套的 ul）===== */
+        ul:nth-of-type(2) > li > ul {
+            position: absolute;          /* ★ 绝对定位：相对父 li 展开 */
+            top: 100%;                   /* 紧贴父项底部 */
+            left: 0;
+            min-width: 100%;             /* 至少与父项同宽 */
+            background: #2470b8;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+            display: none;               /* 默认隐藏 */
+            z-index: 10;
+        }
+
+        /* 二级菜单项 */
+        ul:nth-of-type(2) > li > ul > li {
+            border-bottom: 1px solid #2c6cb0;
+        }
+
+        ul:nth-of-type(2) > li > ul > li:last-child {
+            border-bottom: none;
+        }
+
+        /* 二级链接 */
+        ul:nth-of-type(2) > li > ul > li > a {
+            display: block;
+            padding: 11px 22px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: background 0.25s;
+        }
+
+        ul:nth-of-type(2) > li > ul > li > a:hover {
+            background: #f39c12;
+        }
+
+        /* ===== :hover 显示二级菜单 ===== */
+        ul:nth-of-type(2) > li:hover > ul {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="logo">欢迎访问湖南文理学院</li>
+    </ul>
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">教学院(部)</a>
+            <ul>
+                <li><a href="#">计算机与电气工程学院</a></li>
+                <li><a href="#">芙蓉学院</a></li>
+            </ul>
+        </li>
+        <li><a href="#">党群机构</a></li>
+        <li><a href="#">行政教辅机构</a></li>
+        <li><a href="#">教学科研</a></li>
+        <li><a href="#">招生就业</a></li>
+        <li><a href="#">国际交流</a></li>
+        <li><a href="#">数字图书馆</a></li>
+    </ul>
+</body>
+</html>
